@@ -2,7 +2,11 @@
   <v-app-bar
     dark
     app
+    class="px-lg-12"
   >
+
+    <v-spacer class="hidden-md-and-up"></v-spacer>
+
     <v-toolbar-title>NUS SU Calculator</v-toolbar-title>
 
     <v-spacer></v-spacer>
