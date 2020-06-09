@@ -20,8 +20,9 @@
         <v-icon>mdi-help</v-icon>
       </v-btn>
       <HelpModal />
-      <BotNav />
     </v-content>
+    
+    <BotNav />
 
   </v-app>
 </template>
