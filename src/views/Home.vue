@@ -12,11 +12,12 @@
           class="secondary"
         >
           <v-card-title :class="titleClass" class="font-weight-bold">
-            Calculator
+            Forecast Calculator
           </v-card-title>
-          <v-card-text>
+          <v-card-text v-if="mode=='Forecast'">
             <v-sheet elevation="5" tile class="accent pa-3 ma-2">
               <v-form>
+                <!--
                 <v-select
                   v-model="year"
                   :items="years"
@@ -27,6 +28,7 @@
                   :items="sems"
                   label="This is sem..."
                 ></v-select>
+                -->
                 <v-select
                   v-model="capAim"
                   :items="caps"
@@ -54,9 +56,9 @@
               class="ma-2 pa-3 accent"
               id="sheet"
             >
-              <p>To reach your goal of CAP {{ capAim }}, you would need:</p>
-              <p>{{ averageGrade }}</p>
-              <p>In the next {{ projectLength }} sem(s), assuming 20 MC per sem.</p>
+              <p>To reach your goal of <span class="font-weight-bold">CAP {{ capAim }}</span>, you would need:</p>
+              <p class="font-weight-bold">{{ averageGrade }}</p>
+              <p>In the next {{ projectLength }} sem(s), assuming 20 MC per sem and 4 MC per mod</p>
             </v-sheet>
           </v-card-text>
         </v-card>
@@ -71,6 +73,8 @@
 export default {
   name: 'Home',
   data: () => ({
+    modes: ['SU', 'Forecast'],
+    mode: 'Forecast',
     year: 1,
     years: [1,2,3,4,5],
     sem: 1,
