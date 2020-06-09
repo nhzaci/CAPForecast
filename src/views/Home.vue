@@ -14,9 +14,10 @@
           <v-card-title :class="titleClass" class="font-weight-bold">
             Forecast Calculator
           </v-card-title>
-          <v-card-text v-if="mode=='Forecast'">
+          <v-card-text>
             <v-sheet elevation="5" tile class="accent pa-3 ma-2">
               <v-form>
+                <!-- Commented out because seems redundant -->
                 <!--
                 <v-select
                   v-model="year"
@@ -68,8 +69,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-
 export default {
   name: 'Home',
   data: () => ({
