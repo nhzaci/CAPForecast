@@ -71,6 +71,9 @@
 <script>
 export default {
   name: 'Home',
+  metaInfo: {
+    title: 'Calculator'
+  },
   data: () => ({
     modes: ['SU', 'Forecast'],
     mode: 'Forecast',
