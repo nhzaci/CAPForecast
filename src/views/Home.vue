@@ -135,7 +135,7 @@ export default {
       let totalGP = totalMC * this.capAim
       let remGP = totalGP - (Number(this.mcTaken) * Number(this.capCurr))
       let avgGP = Math.round(remGP / (this.projectLength * 20) * 100) / 100
-      return `Average grade of ${this.getGrade(avgGP)} or GPA of ${avgGP}`
+      return `Average grade of ${this.getGrade(avgGP)} or CAP of ${avgGP}`
     },
     titleClass() {
       if (this.$vuetify.breakpoint.mdAndUp) {
