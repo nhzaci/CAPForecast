@@ -12,7 +12,8 @@
       :class="titleClass" 
       class="font-weight-bold"
     >
-      Module Forecast Calculator
+      <v-icon large class="mx-2">mdi-trending-up</v-icon>
+      CAPForecast
     </v-toolbar-title>
 
     <v-spacer></v-spacer>
