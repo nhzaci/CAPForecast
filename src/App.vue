@@ -9,7 +9,7 @@
       <router-view></router-view>
       <v-btn
         color="contrast"
-        class="secondary--text"
+        class="secondary--text mb-12"
         fab
         large
         fixed
@@ -20,13 +20,16 @@
         <v-icon>mdi-help</v-icon>
       </v-btn>
       <HelpModal />
+      <BotNav />
     </v-content>
+
   </v-app>
 </template>
 
 <script>
 import { mapMutations } from 'vuex'
 
+import BotNav from '@/components/BotNav'
 import HelpModal from '@/components/HelpModal'
 import NavBar from '@/components/NavBar'
 
@@ -37,6 +40,7 @@ export default {
     titleTemplate: '%s | CAPForecast' 
   },
   components: {
+    BotNav,
     HelpModal,
     NavBar
   },

@@ -12,7 +12,18 @@
           class="secondary"
         >
           <v-card-title :class="titleClass" class="font-weight-bold">
-            Forecast Calculator
+            <v-row align="center" class="px-lg-5">
+              <v-col cols="6" md="8">
+                <span class="text-truncate">Forecast Calculator</span>
+              </v-col>
+              <v-spacer></v-spacer>
+              <v-col cols="6" md="4">
+                <v-overflow-btn
+                  :items="modes"
+                  v-model="mode"
+                ></v-overflow-btn>
+              </v-col>
+            </v-row>
           </v-card-title>
           <v-card-text>
             <v-sheet elevation="5" tile class="accent pa-3 ma-2">
@@ -48,6 +59,16 @@
                   v-model="projectLength"
                   label="Number of semesters to project"
                 ></v-select>
+                <v-expand-transition>
+                  <div
+                    v-show="mode==='Advanced'"
+                  >
+                    <v-text-field
+                      label="MC per sem"
+                      v-model="mcSem"
+                    ></v-text-field>
+                  </div>
+                </v-expand-transition>
               </v-form>
 
             </v-sheet>
@@ -59,7 +80,7 @@
             >
               <p>To reach your goal of <span class="font-weight-bold">CAP {{ capAim }}</span>, you would need:</p>
               <p class="font-weight-bold">{{ averageGrade }}</p>
-              <p>In the next {{ projectLength }} sem(s), assuming 20 MC per sem and 4 MC per mod</p>
+              <p>In the next {{ projectLength }} sem(s), assuming {{ mcSem }} MC per sem</p>
             </v-sheet>
           </v-card-text>
         </v-card>
@@ -75,13 +96,14 @@ export default {
     title: 'Calculator'
   },
   data: () => ({
-    modes: ['SU', 'Forecast'],
-    mode: 'Forecast',
+    modes: ['Simple', 'Advanced'],
+    mode: 'Simple',
     year: 1,
     years: [1,2,3,4,5],
     sem: 1,
     sems: [1,2],
     mcTaken: 20,
+    mcSem: 20,
     capAim: 5.0,
     capCurr: 5.0,
     caps: [5.0, 4.5, 4.0, 3.5, 3.0, 2.5, 2.0],
@@ -133,14 +155,19 @@ export default {
     },
     sem: function (val) {
       this.mcTaken = Number(val) * this.year * 20
+    },
+    mode: function(text) {
+      if (text == 'Simple') {
+        this.mcSem = 20
+      }
     }
   },
   computed: {
     averageGrade() {
-      let totalMC = this.projectLength * 20 + Number(this.mcTaken)
+      let totalMC = this.projectLength * this.mcSem + Number(this.mcTaken)
       let totalGP = totalMC * this.capAim
       let remGP = totalGP - (Number(this.mcTaken) * Number(this.capCurr))
-      let avgGP = Math.round(remGP / (this.projectLength * 20) * 100) / 100
+      let avgGP = Math.round(remGP / (this.projectLength * this.mcSem) * 100) / 100
       return `Average grade of ${this.getGrade(avgGP)} or CAP of ${avgGP}`
     },
     titleClass() {
@@ -163,6 +190,7 @@ export default {
   #sheet {
     p {
       margin: 0;
+      text-align: center;
     }
   }
 </style>
