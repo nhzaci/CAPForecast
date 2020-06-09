@@ -1,24 +1,25 @@
-# nus-su-forecast
+# Module Forecast Calculator 
+Pretty simple module forecast calculator to see projected grades to potentially maintain or drop your CAP
 
 ## Project setup
-```
-npm install
+```bash
+# Install dependencies 
+$ npm install
+
+# For hot reload
+$ npm run serve
+
+# Build server
+$ npm run build
+
+# Linting
+$ npm run lint
+
+# Deploy to github pages
+$ npm run deploy
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## TODO:
+- Combinations of different grades required 
+- About page
+- Possible addition of an SU calculator in addition to see how your grades would change
