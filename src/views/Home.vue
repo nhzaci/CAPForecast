@@ -103,7 +103,7 @@ export default {
     */
     getGrade(val) {
       if (val > 5) {
-        return 'Hmmm... Someone trying to play punk?'
+        return 'higher than A'
       } else if (val > 4.50) {
         return 'A'
       } else if (val > 4.00) {
@@ -135,7 +135,7 @@ export default {
       let totalGP = totalMC * this.capAim
       let remGP = totalGP - (Number(this.mcTaken) * Number(this.capCurr))
       let avgGP = Math.round(remGP / (this.projectLength * 20) * 100) / 100
-      return `Average grade of ${this.getGrade(avgGP)} or GPA of ${avgGP}` // assume each mod is 4 MC
+      return `Average grade of ${this.getGrade(avgGP)} or GPA of ${avgGP}`
     },
     titleClass() {
       if (this.$vuetify.breakpoint.mdAndUp) {
