@@ -1,13 +1,19 @@
 <template>
   <v-app-bar
     dark
-    app
-    class="px-lg-12"
+    app 
+    flat
+    class="primary px-lg-12"
   >
 
     <v-spacer class="hidden-md-and-up"></v-spacer>
 
-    <v-toolbar-title>NUS SU Calculator</v-toolbar-title>
+    <v-toolbar-title 
+      :class="titleClass" 
+      class="font-weight-bold"
+    >
+      Module Forecast Calculator
+    </v-toolbar-title>
 
     <v-spacer></v-spacer>
 
@@ -30,7 +36,20 @@
 
 <script>
   export default {
-    
+    computed: {
+      titleClass() {
+        if (this.$vuetify.breakpoint.mdAndUp) {
+          return 'display-1'
+        }
+        return 'headline'
+      },
+      subtitleClass() {
+        if (this.$vuetify.breakpoint.mdAndUp) {
+          return 'headline'
+        }
+        return 'subtitle-1'
+      }
+    }
   }
 </script>
 

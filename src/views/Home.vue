@@ -9,48 +9,60 @@
           dark
           tile
           elevation="10"
+          class="secondary"
         >
           <v-card-title :class="titleClass" class="font-weight-bold">
             Calculator
           </v-card-title>
           <v-card-text>
-            <v-form>
-              <v-select
-                v-model="year"
-                :items="years"
-                label="I am in year..."
-              ></v-select>
-              <v-select
-                v-model="sem"
-                :items="sems"
-                label="This is sem..."
-              ></v-select>
-              <v-select
-                v-model="capAim"
-                :items="caps"
-                label="I am aiming for at least CAP"
-              ></v-select>
-              <v-text-field
-                label="My current CAP"
-                v-model="capCurr"
-              ></v-text-field>
-              <v-text-field
-                label="Current MCs counted in CAP"
-                v-model="mcTaken"
-              ></v-text-field>
-              <v-select
-                :items="projectSem"
-                v-model="projectLength"
-                label="Number of semesters to project"
-              ></v-select>
+            <v-form class="accent pa-3 ma-2" elevation="5">
+              <v-row>
+              <v-col cols="12" md="6">
+                <v-select
+                  v-model="year"
+                  :items="years"
+                  label="I am in year..."
+                ></v-select>
+                <v-select
+                  v-model="sem"
+                  :items="sems"
+                  label="This is sem..."
+                ></v-select>
+                <v-select
+                  v-model="capAim"
+                  :items="caps"
+                  label="I am aiming for at least CAP"
+                ></v-select>
+
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-text-field
+                  label="My current CAP"
+                  v-model="capCurr"
+                ></v-text-field>
+                <v-text-field
+                  label="Current MCs counted in CAP"
+                  v-model="mcTaken"
+                ></v-text-field>
+                <v-select
+                  :items="projectSem"
+                  v-model="projectLength"
+                  label="Number of semesters to project"
+                ></v-select>
+              </v-col>
+
+              </v-row>
             </v-form>
-            <p>To reach your goal of CAP {{ capAim }}, you would need:</p>
-            <p>Combinations of:
-              <ul>
-                <li>{{ averageGrade }}</li>
-              </ul>
-            </p>
-            <p>In the next {{ projectLength }} sem(s), assuming 20 MC per sem.</p>
+            <v-sheet
+              elevation="5"
+              tile
+              class="ma-2 pa-3 accent"
+              id="sheet"
+            >
+              <p>To reach your goal of CAP {{ capAim }}, you would need:</p>
+              <p>{{ averageGrade }}</p>
+              <p>In the next {{ projectLength }} sem(s), assuming 20 MC per sem.</p>
+            </v-sheet>
           </v-card-text>
         </v-card>
       </v-col>
@@ -77,28 +89,23 @@ export default {
     projectLength: 1,
   }),
   methods: {
+    /*
     getCombinations(total) {
+      var caps = this.caps.slice(0,3)
       var count = 0
-      var caps = this.capsReverse
+      var combinations = []
 
-      var changer = function(index, value) {
+      var counter = function(index, value) {
         var currentCap = caps[index]
 
         if (index == 0) {
-          if (value % currentCap == 0) {
-            count++
+          if (value % currentCoin == 0) {
+            combinations.pu
           }
-          return
-        }
-
-        while (value >= 0) {
-          changer(index-1, value)
-          value -= currentCap
         }
       }
-      changer(caps.length - 1, total)
-      return count
     },
+    */
     getGrade(val) {
       if (val > 5) {
         return 'Hmmm... Someone trying to play punk?'
@@ -132,8 +139,8 @@ export default {
       let totalMC = this.projectLength * 20 + Number(this.mcTaken)
       let totalGP = totalMC * this.capAim
       let remGP = totalGP - (Number(this.mcTaken) * Number(this.capCurr))
-      //let avgGP = remGP / (this.projectLength * 20)
-      return this.getCombinations(remGP / 4) // assume each mod is 4 MC
+      let avgGP = Math.round(remGP / (this.projectLength * 20) * 100) / 100
+      return `Average grade of ${this.getGrade(avgGP)} or GPA of ${avgGP}` // assume each mod is 4 MC
     },
     titleClass() {
       if (this.$vuetify.breakpoint.mdAndUp) {
@@ -150,3 +157,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  #sheet {
+    p {
+      margin: 0;
+    }
+  }
+</style>

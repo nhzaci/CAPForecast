@@ -5,7 +5,7 @@
 
     <NavBar />
 
-    <v-content>
+    <v-content height="100%" class="primary">
       <router-view></router-view>
     </v-content>
   </v-app>
