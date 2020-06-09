@@ -1,6 +1,7 @@
 <template>
   <v-bottom-navigation
     class="contrast"
+    value="true"
     app
   >
     <v-btn>
@@ -21,9 +22,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-btn {
-  .span {
-    
-  }
-}
 </style>

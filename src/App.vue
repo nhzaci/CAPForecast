@@ -21,8 +21,7 @@
       </v-btn>
       <HelpModal />
     </v-content>
-    
-    <BotNav />
+
 
   </v-app>
 </template>
@@ -30,7 +29,6 @@
 <script>
 import { mapMutations } from 'vuex'
 
-import BotNav from '@/components/BotNav'
 import HelpModal from '@/components/HelpModal'
 import NavBar from '@/components/NavBar'
 
@@ -41,7 +39,6 @@ export default {
     titleTemplate: '%s | CAPForecast' 
   },
   components: {
-    BotNav,
     HelpModal,
     NavBar
   },
