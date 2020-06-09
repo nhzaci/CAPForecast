@@ -16,42 +16,34 @@
           </v-card-title>
           <v-card-text>
             <v-form class="accent pa-3 ma-2" elevation="5">
-              <v-row>
-              <v-col cols="12" md="6">
-                <v-select
-                  v-model="year"
-                  :items="years"
-                  label="I am in year..."
-                ></v-select>
-                <v-select
-                  v-model="sem"
-                  :items="sems"
-                  label="This is sem..."
-                ></v-select>
-                <v-select
-                  v-model="capAim"
-                  :items="caps"
-                  label="I am aiming for at least CAP"
-                ></v-select>
-
-              </v-col>
-              <v-col cols="12" md="6">
-                <v-text-field
-                  label="My current CAP"
-                  v-model="capCurr"
-                ></v-text-field>
-                <v-text-field
-                  label="Current MCs counted in CAP"
-                  v-model="mcTaken"
-                ></v-text-field>
-                <v-select
-                  :items="projectSem"
-                  v-model="projectLength"
-                  label="Number of semesters to project"
-                ></v-select>
-              </v-col>
-
-              </v-row>
+              <v-select
+                v-model="year"
+                :items="years"
+                label="I am in year..."
+              ></v-select>
+              <v-select
+                v-model="sem"
+                :items="sems"
+                label="This is sem..."
+              ></v-select>
+              <v-select
+                v-model="capAim"
+                :items="caps"
+                label="I am aiming for at least CAP"
+              ></v-select>
+              <v-text-field
+                label="My current CAP"
+                v-model="capCurr"
+              ></v-text-field>
+              <v-text-field
+                label="Current MCs counted in CAP"
+                v-model="mcTaken"
+              ></v-text-field>
+              <v-select
+                :items="projectSem"
+                v-model="projectLength"
+                label="Number of semesters to project"
+              ></v-select>
             </v-form>
             <v-sheet
               elevation="5"
