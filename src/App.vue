@@ -6,7 +6,9 @@
     <NavBar />
 
     <v-content height="100%" class="primary">
-      <router-view></router-view>
+      <v-fade-transition>
+        <router-view></router-view>
+      </v-fade-transition>
       <v-btn
         color="contrast"
         class="secondary--text mb-12"
