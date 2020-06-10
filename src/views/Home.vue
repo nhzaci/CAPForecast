@@ -14,7 +14,7 @@
           <v-card-title :class="titleClass" class="font-weight-bold">
             <v-row align="center" class="px-lg-5">
               <v-col cols="6" md="8" class="text-truncate">
-                <span>Forecast Calculator</span>
+                <span :class="titleClass" class="font-weight-bold">Forecast Calculator</span>
               </v-col>
               <v-spacer></v-spacer>
               <v-col cols="6" md="4">
@@ -92,7 +92,7 @@
             </v-sheet>
             <v-expand-transition>
               <div v-if="saved.length">
-                <h1>Saved Combinations</h1>
+                <h1 :class="titleClass" class="font-weight-bold px-lg-5 white--text py-2">Saved Combinations</h1>
                 <v-sheet
                   elevation="5"
                   tile
