@@ -105,7 +105,7 @@
                       :key="comb+i"
                       class="my-2"
                     >
-                      <p>To reach your goal of <span class="font-weight-bold">CAP {{ comb[0] }}</span> from {{ comb[4] }} on {{ comb[5] }} MCs</p>
+                      <p>To reach your goal of <span class="font-weight-bold">CAP {{ comb[0] }}</span> from a CAP of {{ comb[4] }} on {{ comb[5] }} MCs</p>
                       <p class="font-weight-bold">{{ comb[1] }}</p>
                       <p>In the next {{ comb[2] }} sem(s), assuming {{ comb[3] }} MC per sem</p>
                       <v-btn
