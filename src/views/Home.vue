@@ -81,7 +81,46 @@
               <p>To reach your goal of <span class="font-weight-bold">CAP {{ capAim }}</span>, you would need:</p>
               <p class="font-weight-bold">{{ averageGrade }}</p>
               <p>In the next {{ projectLength }} sem(s), assuming {{ mcSem }} MC per sem</p>
+              <v-btn
+                color="primary"
+                tile
+                elevation="5"
+                @click="saveCombi"
+              >
+                Save Combination
+              </v-btn>
             </v-sheet>
+            <v-expand-transition>
+              <div v-if="saved.length">
+                <h1>Saved Combinations</h1>
+                <v-sheet
+                  elevation="5"
+                  tile
+                  class="ma-2 pa-3 accent"
+                  id="savedSheet"
+                >
+                  <v-scroll-x-transition group>
+                    <div
+                      v-for="(comb, i) in saved"
+                      :key="comb+i"
+                      class="my-2"
+                    >
+                      <p>To reach your goal of <span class="font-weight-bold">CAP {{ comb[0] }}</span>, you would need:</p>
+                      <p class="font-weight-bold">{{ comb[1] }}</p>
+                      <p>In the next {{ comb[2] }} sem(s), assuming {{ comb[3] }} MC per sem</p>
+                      <v-btn
+                        color="error"
+                        tile
+                        elevation="5"
+                        @click="deleteCombi(i)"
+                      >
+                        Remove Combination
+                      </v-btn>
+                    </div>
+                  </v-scroll-x-transition>
+                </v-sheet>
+              </div>
+            </v-expand-transition>
           </v-card-text>
         </v-card>
       </v-col>
@@ -110,8 +149,20 @@ export default {
     capsReverse: [2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0],
     projectSem: [1,2,3,4,5,6,7,8,9,10],
     projectLength: 1,
+    saved: []
   }),
   methods: {
+    saveCombi() {
+      var aim = this.capAim
+      var avgGrade = this.averageGrade
+      var projectLength = this.projectLength
+      var mcSem = this.mcSem
+      this.saved.push([aim, avgGrade, projectLength, mcSem])
+    },
+    deleteCombi(index) {
+      // Removes a saved item from the array 
+      this.saved.splice(index,1)
+    },
     /*
     getCombinations(total) {
       var caps = this.caps.slice(0,3)
@@ -188,6 +239,12 @@ export default {
 
 <style lang="scss">
   #sheet {
+    p {
+      margin: 0;
+      text-align: center;
+    }
+  }
+  #savedSheet {
     p {
       margin: 0;
       text-align: center;
