@@ -13,8 +13,8 @@
         >
           <v-card-title :class="titleClass" class="font-weight-bold">
             <v-row align="center" class="px-lg-5">
-              <v-col cols="6" md="8">
-                <span class="text-truncate">Forecast Calculator</span>
+              <v-col cols="6" md="8" class="text-truncate">
+                <span>Forecast Calculator</span>
               </v-col>
               <v-spacer></v-spacer>
               <v-col cols="6" md="4">
